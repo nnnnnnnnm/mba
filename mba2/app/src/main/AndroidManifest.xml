@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".replyForm" />
+        <activity android:name=".bookingList" />
+        <activity android:name=".addBooking"></activity>
     </application>
 
 </manifest>
