@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private final static int _DBVersion = 1; //<-- 版本
     private final static String _DBName = "MBA.db";  //<-- db name
-    private final static String _TableName = "Order"; //<-- table name
+    private final static String _TableName = "Booking"; //<-- table name
     private final static String _Name = "Photo"; //<-- table name
 
     public DBHelper(Context context) {
@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        final String SQL = "CREATE TABLE IF NOT EXISTS " + _TableName + "( " +
+        final String SQL = "CREATE TABLE IF NOT EXISTS " + _TableName + " ( " +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "_fname TEXT, " +
                 "_lname TEXT," +
@@ -42,10 +42,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL);
         Log.d("Helper", "Create Order Table");
 
-        final String SQL2 = "CREATE TABLE IF NOT EXISTS " + _Name + "( " +
+        final String SQL2 = "CREATE TABLE IF NOT EXISTS " + _Name + " ( " +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "_path TEXT, " +
-                "_oid TEXT," +
+                "_oid TEXT" +
                 ");";
         db.execSQL(SQL2);
         Log.d("Helper", "Create Photo Table");
