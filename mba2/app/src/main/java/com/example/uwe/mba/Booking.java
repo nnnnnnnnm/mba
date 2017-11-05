@@ -5,5 +5,5 @@ package com.example.uwe.mba;
  */
 
 public class Booking {
-    private String id
+    private String id;
 }

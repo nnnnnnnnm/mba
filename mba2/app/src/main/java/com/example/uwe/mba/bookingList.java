@@ -13,25 +13,22 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import android.widget.ListAdapter;
+import android.widget.Toast;
 
 
 public class bookingList extends AppCompatActivity {
 
     Button btnListBack, btnAddBooking;
     ListView listBooking;
-    private DBHelper DH = null;
-    private ArrayList<String> data = new ArrayList<>();
-    private ArrayAdapter<String> lvItemAdapter;
+    DBHelper DH = new DBHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_list);
 
-        retrieveRecords();
-
         openDB();
-        Log.d("db", "OOOOOOOOOOOOPEN ");
 
         btnListBack = (Button)findViewById(R.id.btnListBack);
         btnListBack.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +50,21 @@ public class bookingList extends AppCompatActivity {
 
         listBooking = (ListView)findViewById(R.id.listBooking);
 
-    }
+        ArrayList<String> theList = new ArrayList<>();
+        Cursor data = DH.getListContents();
+        if(data.getCount() == 0){
+            Toast.makeText(this, "There are no contents in this list!",Toast.LENGTH_LONG).show();
+        }else{
+            while(data.moveToNext()){
+                theList.add("Frist name: " + data.getString(1));
+                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,theList);
+                listBooking.setAdapter(listAdapter);
+            }
+        }
 
+        closeDB();
+
+    }
 
     private void openDB() {
         DH = new DBHelper(this);
@@ -62,7 +72,6 @@ public class bookingList extends AppCompatActivity {
     private void closeDB() {
         DH.close();
     }
-
     protected void onDestroy() {
         super.onDestroy();
         closeDB();

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.database.Cursor;
 
 /**
  * Created by Hin on 21/10/2017.
@@ -12,52 +13,56 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private final static int _DBVersion = 1; //<-- 版本
-    private final static String _DBName = "MBA.db";  //<-- db name
-    private final static String _TableName = "Booking"; //<-- table name
-    private final static String _Name = "Photo"; //<-- table name
+    private static final String SQL_CREATE_THABLE_ORDERS =
+            "CREATE TABLE " + DbContact.DbEntry.orders + " (" +
+                    DbContact.DbEntry.oid + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    DbContact.DbEntry.fname + " TEXT, " +
+                    DbContact.DbEntry.lname + " TEXT, " +
+                    DbContact.DbEntry.phone + " TEXT, " +
+                    DbContact.DbEntry.email + " TEXT, " +
+                    DbContact.DbEntry.odate + " TEXT, " +
+                    DbContact.DbEntry.otime + " TEXT, " +
+                    DbContact.DbEntry.location + " TEXT, " +
+                    DbContact.DbEntry.paymentstatus + " TEXT, " +
+                    DbContact.DbEntry.jobstatus + " TEXT, " +
+                    DbContact.DbEntry.deposit + " TEXT, " +
+                    DbContact.DbEntry.finalpay + " TEXT, " +
+                    DbContact.DbEntry.remarks + " TEXT)";
+
+    private static final String SQL_DELETE_THABLE_ORDERS =
+            "DROP TABLE IF EXIST " + DbContact.DbEntry.orders;
+
+    private static final String SQL_CREATE_THABLE_PHOTOS =
+            "CREATE TABLE " + DbContact.DbEntry.photos + " (" +
+                    DbContact.DbEntry.pid + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    DbContact.DbEntry.photopath + " TEXT, " +
+                    DbContact.DbEntry.orderid + " TEXT)";
+
+    private static final String SQL_DELETE_THABLE_PHOTOS =
+            "DROP TABLE IF EXIST " + DbContact.DbEntry.photos;
+
+    private final static int DATABASE_VERSION = 1; //<-- 版本
+    private final static String DATABASE_NAME = "MBADb.db";  //<-- db name
 
     public DBHelper(Context context) {
-        super(context, _DBName, null, _DBVersion);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.d("HELPER", "DB HELPER CALLED");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        final String SQL = "CREATE TABLE IF NOT EXISTS " + _TableName + " ( " +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "_fname TEXT, " +
-                "_lname TEXT," +
-                "_phone TEXT" +
-                "_email TEXT, " +
-                "_odate TEXT," +
-                "_otime TEXT" +
-                "_location TEXT, " +
-                "_paystatus TEXT," +
-                "_jobstatus TEXT" +
-                "_deposit TEXT, " +
-                "_total TEXT," +
-                "_remake TEXT" +
-                ");";
-        db.execSQL(SQL);
-        Log.d("Helper", "Create Order Table");
-
-        final String SQL2 = "CREATE TABLE IF NOT EXISTS " + _Name + " ( " +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "_path TEXT, " +
-                "_oid TEXT" +
-                ");";
-        db.execSQL(SQL2);
-        Log.d("Helper", "Create Photo Table");
-
+        db.execSQL(SQL_CREATE_THABLE_ORDERS);
+        Log.d("Helper", SQL_CREATE_THABLE_ORDERS);
+        db.execSQL(SQL_CREATE_THABLE_PHOTOS);
+        Log.d("Helper", SQL_CREATE_THABLE_PHOTOS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        final String SQL = "DROP TABLE " + _TableName;
-        db.execSQL(SQL);
-        final String SQL2 = "DROP TABLE " + _Name;
-        db.execSQL(SQL2);
+        db.execSQL(SQL_DELETE_THABLE_ORDERS);
+        Log.d("Helper", SQL_DELETE_THABLE_ORDERS);
+        db.execSQL(SQL_DELETE_THABLE_PHOTOS);
+        Log.d("Helper", SQL_DELETE_THABLE_PHOTOS);
         onCreate(db);
     }
 
@@ -65,22 +70,22 @@ public class DBHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public boolean insertOrder(String fname, String lname, String phone, String email, String odate, String otime, String location, String paystatus, String jobstatus, String deposit, String total, String remake){
+    public boolean insertOrder(String fname, String lname, String phone, String email, String odate, String otime,
+                               String location, String paymentstatus, String jobstatus, String deposit, String finalpay, String remarks){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("fname", fname);
-        contentValues.put("lname", lname);
-        contentValues.put("phone", phone);
-        contentValues.put("email", email);
-        contentValues.put("odate", odate);
-        contentValues.put("otime", otime);
-        contentValues.put("location", location);
-        contentValues.put("paystatus", paystatus);
-        contentValues.put("jobstatus", jobstatus);
-        contentValues.put("deposit", deposit);
-        contentValues.put("total", total);
-        contentValues.put("remake", remake);
-        long result = db.insert("Order", null, contentValues);
+        contentValues.put(DbContact.DbEntry.fname, fname);
+        contentValues.put(DbContact.DbEntry.lname, lname);
+        contentValues.put(DbContact.DbEntry.phone, phone);
+        contentValues.put(DbContact.DbEntry.email, email);
+        contentValues.put(DbContact.DbEntry.odate, odate);
+        contentValues.put(DbContact.DbEntry.otime, otime);
+        contentValues.put(DbContact.DbEntry.paymentstatus, paymentstatus);
+        contentValues.put(DbContact.DbEntry.jobstatus, jobstatus);
+        contentValues.put(DbContact.DbEntry.deposit, deposit);
+        contentValues.put(DbContact.DbEntry.finalpay, finalpay);
+        contentValues.put(DbContact.DbEntry.remarks, remarks);
+        long result = db.insert(DbContact.DbEntry.orders, null, contentValues);
         if (result == -1) {
             return false;
         } else {
@@ -88,20 +93,19 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean UpdateOrder(String orderId, String fname, String lname, String phone, String email, String odate, String otime, String location, String deposit, String total, String remake){
+    public boolean UpdateOrder(String orderId, String fname, String lname, String phone, String email, String odate, String otime, String location, String deposit, String finalpay, String remarks){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("fname", fname);
-        contentValues.put("lname", lname);
-        contentValues.put("phone", phone);
-        contentValues.put("email", email);
-        contentValues.put("odate", odate);
-        contentValues.put("otime", otime);
-        contentValues.put("location", location);
-        contentValues.put("deposit", deposit);
-        contentValues.put("total", total);
-        contentValues.put("remake", remake);
-        long result = db.update("Order", contentValues,
+        contentValues.put(DbContact.DbEntry.fname, fname);
+        contentValues.put(DbContact.DbEntry.lname, lname);
+        contentValues.put(DbContact.DbEntry.phone, phone);
+        contentValues.put(DbContact.DbEntry.email, email);
+        contentValues.put(DbContact.DbEntry.odate, odate);
+        contentValues.put(DbContact.DbEntry.otime, otime);
+        contentValues.put(DbContact.DbEntry.deposit, deposit);
+        contentValues.put(DbContact.DbEntry.finalpay, finalpay);
+        contentValues.put(DbContact.DbEntry.remarks, remarks);
+        long result = db.update(DbContact.DbEntry.orders, contentValues,
                 "id =?",
                 new String[]{String.valueOf(orderId)});
         if (result == -1) {
@@ -111,12 +115,12 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean UpdateOrderStatus(String orderId, String paystatus, String jobstatus){
+    public boolean UpdateOrderStatus(String orderId, String paymentstatus, String jobstatus){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("paystatus", paystatus);
-        contentValues.put("jobstatus", jobstatus);
-        long result = db.update("Order", contentValues,
+        contentValues.put(DbContact.DbEntry.paymentstatus, paymentstatus);
+        contentValues.put(DbContact.DbEntry.jobstatus, jobstatus);
+        long result = db.update(DbContact.DbEntry.orders, contentValues,
                 "id =?",
                 new String[]{String.valueOf(orderId)});
         if (result == -1) {
@@ -128,15 +132,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean deleteOrder(String orderId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete("Order",
-                "id =?",
+        long result = db.delete(DbContact.DbEntry.orders,
+                DbContact.DbEntry.oid + "=?",
                 new String[]{String.valueOf(orderId)});
         if (result == -1) {
             return false;
         } else {
             return true;
         }
+    }
 
+    public Cursor getListContents(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + DbContact.DbEntry.orders, null);
+        Log.d("dbbbbbbbbbbbbbb", data.toString());
+        return data;
     }
 
 }

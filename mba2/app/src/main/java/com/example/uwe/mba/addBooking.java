@@ -69,6 +69,7 @@ public class addBooking extends AppCompatActivity {
     }
 
     private void add(){
+        /*
         try {
             SQLiteDatabase db = DH.getWritableDatabase();
             ContentValues values = new ContentValues();
@@ -85,23 +86,40 @@ public class addBooking extends AppCompatActivity {
             values.put("_total", etFPay.toString());
             values.put("_remake", etRemark.toString());
             db.insert("Booking", null, values);
+            */
+            boolean isInserted = DH.insertOrder(etFname.getText().toString(),
+                    etFname.getText().toString(),
+                    etPhone.getText().toString(),
+                    etEmail.getText().toString(),
+                    etDate.getText().toString(),
+                    etTime.getText().toString(),
+                    etLoc.getText().toString(),
+                    " deposit received ",
+                    " confirm ",
+                    etDep.getText().toString(),
+                    etFPay.getText().toString(),
+                    etRemark.getText().toString());
+        /*
         } catch (SQLiteException e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(this, "This Booking has added!!!!", Toast.LENGTH_LONG).show();
-        Log.d("db", "Added!!!!!!!!!!!!!!!!!:");
-
-        etFname.setText("");
-        etLname.setText("");
-        etPhone.setText("");
-        etEmail.setText("");
-        etDate.setText("");
-        etTime.setText("");
-        etLoc.setText("");
-        etDep.setText("");
-        etFPay.setText("");
-        etRemark.setText("");
-
+        */
+        if (isInserted == true) {
+            etFname.setText("");
+            etLname.setText("");
+            etPhone.setText("");
+            etEmail.setText("");
+            etDate.setText("");
+            etTime.setText("");
+            etLoc.setText("");
+            etDep.setText("");
+            etFPay.setText("");
+            etRemark.setText("");
+            Toast.makeText(this, "This Orders has added!!!!", Toast.LENGTH_LONG).show();
+            Log.d("db", "Added!!!!!!!!!!!!!!!!!:");
+        } else {
+            Log.d("AAAAAAAAAAADDDDDDD", "GGGGGGGGG");
+        }
     }
     public void createAddDialogBox() {
         AlertDialog.Builder adExit= new AlertDialog.Builder(this);
