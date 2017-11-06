@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 public class bookingList extends AppCompatActivity {
 
-    Button btnListBack, btnAddBooking;
+    Button btnListBack, btnAddBooking, btnDel;
     ListView listBooking;
     DBHelper DH = new DBHelper(this);
+    MyBookingAdapter myCustomAdapter=null;
+    ArrayList<Booking> cars=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,16 @@ public class bookingList extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        btnDel = (Button)findViewById(R.id.btnDel);
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DH.deleteOrders();
+            }
+        });
 
         listBooking = (ListView)findViewById(R.id.listBooking);
-
+/*
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = DH.getListContents();
         if(data.getCount() == 0){
@@ -61,6 +70,11 @@ public class bookingList extends AppCompatActivity {
                 listBooking.setAdapter(listAdapter);
             }
         }
+*/
+        cars=DH.getData();
+        myCustomAdapter= new MyBookingAdapter(this,R.layout.list_item,cars);
+
+        listBooking.setAdapter(myCustomAdapter);
 
         closeDB();
 

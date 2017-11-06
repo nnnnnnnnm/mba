@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 /**
  * Created by Hin on 21/10/2017.
  */
@@ -30,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     DbContact.DbEntry.remarks + " TEXT)";
 
     private static final String SQL_DELETE_THABLE_ORDERS =
-            "DROP TABLE IF EXIST " + DbContact.DbEntry.orders;
+            "DROP TABLE " + DbContact.DbEntry.orders;
 
     private static final String SQL_CREATE_THABLE_PHOTOS =
             "CREATE TABLE " + DbContact.DbEntry.photos + " (" +
@@ -39,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     DbContact.DbEntry.orderid + " TEXT)";
 
     private static final String SQL_DELETE_THABLE_PHOTOS =
-            "DROP TABLE IF EXIST " + DbContact.DbEntry.photos;
+            "DROP TABLE " + DbContact.DbEntry.photos;
 
     private final static int DATABASE_VERSION = 1; //<-- 版本
     private final static String DATABASE_NAME = "MBADb.db";  //<-- db name
@@ -66,6 +68,15 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void deleteOrders(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(SQL_DELETE_THABLE_ORDERS);
+        Log.d("Helper", SQL_DELETE_THABLE_ORDERS);
+        db.execSQL(SQL_DELETE_THABLE_PHOTOS);
+        Log.d("Helper", SQL_DELETE_THABLE_PHOTOS);
+        onCreate(db);
+    }
+
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){
         onUpgrade(db, oldVersion, newVersion);
     }
@@ -80,6 +91,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(DbContact.DbEntry.email, email);
         contentValues.put(DbContact.DbEntry.odate, odate);
         contentValues.put(DbContact.DbEntry.otime, otime);
+        contentValues.put(DbContact.DbEntry.location, location);
         contentValues.put(DbContact.DbEntry.paymentstatus, paymentstatus);
         contentValues.put(DbContact.DbEntry.jobstatus, jobstatus);
         contentValues.put(DbContact.DbEntry.deposit, deposit);
@@ -102,6 +114,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(DbContact.DbEntry.email, email);
         contentValues.put(DbContact.DbEntry.odate, odate);
         contentValues.put(DbContact.DbEntry.otime, otime);
+        contentValues.put(DbContact.DbEntry.location, location);
         contentValues.put(DbContact.DbEntry.deposit, deposit);
         contentValues.put(DbContact.DbEntry.finalpay, finalpay);
         contentValues.put(DbContact.DbEntry.remarks, remarks);
@@ -147,6 +160,28 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery("SELECT * FROM " + DbContact.DbEntry.orders, null);
         Log.d("dbbbbbbbbbbbbbb", data.toString());
         return data;
+    }
+
+    public ArrayList<Booking> getData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<Booking> booking = new ArrayList<Booking>();
+        Cursor result = db.rawQuery("SELECT * FROM " + DbContact.DbEntry.orders, null);
+
+        while(result.moveToNext()){
+            booking.add( new Booking(result.getString(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getString(4),
+                    result.getString(5),
+                    result.getString(6),
+                    result.getString(7),
+                    result.getString(8),
+                    result.getString(9),
+                    result.getString(10),
+                    result.getString(11),
+                    result.getString(12)));
+        }
+        return booking;
     }
 
 }

@@ -88,7 +88,7 @@ public class addBooking extends AppCompatActivity {
             db.insert("Booking", null, values);
             */
             boolean isInserted = DH.insertOrder(etFname.getText().toString(),
-                    etFname.getText().toString(),
+                    etLname.getText().toString(),
                     etPhone.getText().toString(),
                     etEmail.getText().toString(),
                     etDate.getText().toString(),
