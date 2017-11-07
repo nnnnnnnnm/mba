@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".replyForm" />
         <activity android:name=".bookingList" />
-        <activity android:name=".addBooking"></activity>
+        <activity android:name=".addBooking" />
+        <activity android:name=".BookingActivity"></activity>
     </application>
 
 </manifest>

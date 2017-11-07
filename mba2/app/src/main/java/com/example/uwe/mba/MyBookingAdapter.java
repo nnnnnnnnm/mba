@@ -29,13 +29,11 @@ public class MyBookingAdapter extends ArrayAdapter{
 
         this.context= context;
         booking=objects;
-
     }
     private class ViewHolder
     {
         TextView bookingFname, bookingPhone, bookingEmail, bookingLocation, bookingOdate, bookingOtime;
     }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -53,14 +51,13 @@ public class MyBookingAdapter extends ArrayAdapter{
             holder.bookingOdate = (TextView) convertView.findViewById(R.id.bookingOdate);
             holder.bookingOtime=(TextView)convertView.findViewById(R.id.bookingOtime);
             convertView.setTag(holder);
-
         }
         else {
             holder = (ViewHolder) convertView.getTag();
         }
 
         Booking individualCar= booking.get(position);
-        holder.bookingFname.setText("Name: " + individualCar.getLname()+"   "+individualCar.getFname() + "");
+        holder.bookingFname.setText("Name: " + individualCar.getLname()+" "+individualCar.getFname() + "");
         holder.bookingEmail.setText("Email: "+ individualCar.getEmail()+"");
         holder.bookingPhone.setText("Phone: "+individualCar.getPhone()+"");
         holder.bookingLocation.setText("Location: "+ individualCar.getLocation()+"");
@@ -81,10 +78,5 @@ public class MyBookingAdapter extends ArrayAdapter{
         holder.bookingOdate.setText("Date: "+ date+"");
         holder.bookingOtime.setText("Time: "+ time +"");
         return convertView;
-
-
     }
-
-
-
 }

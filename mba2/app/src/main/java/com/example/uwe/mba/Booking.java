@@ -1,16 +1,22 @@
 package com.example.uwe.mba;
 
+import java.io.Serializable;
+
 /**
  * Created by Hin on 5/11/2017.
  */
 
-public class Booking {
+public class Booking implements Serializable {
     String fname, lname, phone, email, odate, otime,
             location, paymentstatus, jobstatus, deposit, finalpay, remarks;
+    int oid;
 
-    public Booking(String fname, String lname, String phone, String email,
+
+
+    public Booking(int oid, String fname, String lname, String phone, String email,
                    String odate, String otime, String location, String paymentstatus,
                    String jobstatus, String deposit, String finalpay, String remarks) {
+        this.oid = oid;
         this.fname = fname;
         this.lname = lname;
         this.phone = phone;
@@ -24,6 +30,10 @@ public class Booking {
         this.finalpay = finalpay;
         this.remarks = remarks;
     }
+
+    public int getOid() { return oid; }
+
+    public void setOid(int oid) { this.oid = oid; }
 
     public String getFname() {
         return fname;

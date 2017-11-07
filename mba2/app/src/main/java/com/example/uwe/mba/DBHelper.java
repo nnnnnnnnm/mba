@@ -168,7 +168,8 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor result = db.rawQuery("SELECT * FROM " + DbContact.DbEntry.orders, null);
 
         while(result.moveToNext()){
-            booking.add( new Booking(result.getString(1),
+            booking.add( new Booking(result.getInt(0),
+                    result.getString(1),
                     result.getString(2),
                     result.getString(3),
                     result.getString(4),
@@ -184,4 +185,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return booking;
     }
 
+    public Cursor getEdit(String oid){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + DbContact.DbEntry.orders + " WHERE oid=" + oid, null);
+        Log.d("SSSSSSSSreached", data.toString());
+        return data;
+    }
 }

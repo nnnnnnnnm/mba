@@ -1,47 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:text="TextView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/bookingFname"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
         android:id="@+id/bookingEmail"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/bookingFname"
+        app:layout_constraintTop_toBottomOf="@+id/bookingFname"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/bookingFname"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/bookingPhone"
-        android:textSize="18sp"/>
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/bookingEmail"
+        app:layout_constraintTop_toBottomOf="@+id/bookingEmail"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/bookingEmail"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/bookingLocation"
-        android:textSize="18sp"/>
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/bookingPhone"
+        app:layout_constraintTop_toBottomOf="@+id/bookingPhone"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/bookingPhone"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/bookingOdate"
-        android:textSize="18sp"/>
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintRight_toLeftOf="@+id/bookingOtime"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bookingOtime"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/bookingLocation"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/bookingOtime"
-        android:textSize="18sp"/>
-</LinearLayout>
+        android:layout_width="184dp"
+        android:layout_height="23dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/bookingLocation"
+        app:layout_constraintTop_toBottomOf="@+id/bookingLocation" />
+</android.support.constraint.ConstraintLayout>
