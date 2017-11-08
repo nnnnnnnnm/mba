@@ -57,7 +57,7 @@ public class MyBookingAdapter extends ArrayAdapter{
         }
 
         Booking individualCar= booking.get(position);
-        holder.bookingFname.setText("Name: " + individualCar.getLname()+" "+individualCar.getFname() + "");
+        holder.bookingFname.setText("Name: " + individualCar.getFname()+" "+individualCar.getLname() + "");
         holder.bookingEmail.setText("Email: "+ individualCar.getEmail()+"");
         holder.bookingPhone.setText("Phone: "+individualCar.getPhone()+"");
         holder.bookingLocation.setText("Location: "+ individualCar.getLocation()+"");

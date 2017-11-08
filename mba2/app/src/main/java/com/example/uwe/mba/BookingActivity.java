@@ -13,8 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.example.uwe.mba.R.id.view;
-
 public class BookingActivity extends AppCompatActivity {
 
     TextView txtFname, txtLname, txtPhone, txtEmail, txtDate, txtTime, txtLoc, txtDep, txtFpay, txtRemark, txtPayment, txtJob;
@@ -27,18 +25,18 @@ public class BookingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
-        txtFname = (TextView)findViewById(R.id.txtFname);
-        txtLname = (TextView)findViewById(R.id.txtLname);
-        txtPhone = (TextView)findViewById(R.id.txtPhone);
-        txtEmail = (TextView)findViewById(R.id.txtEmail);
-        txtDate = (TextView)findViewById(R.id.txtDate);
-        txtTime = (TextView)findViewById(R.id.txtTime);
-        txtLoc = (TextView)findViewById(R.id.txtLoc);
-        txtDep = (TextView)findViewById(R.id.txtDep);
-        txtFpay = (TextView)findViewById(R.id.txtFpay);
-        txtRemark = (TextView)findViewById(R.id.txtRemark);
-        txtPayment = (TextView)findViewById(R.id.txtPayment);
-        txtJob = (TextView)findViewById(R.id.txtJob);
+        txtFname = (TextView)findViewById(R.id.txtViewFname);
+        txtLname = (TextView)findViewById(R.id.txtViewLname);
+        txtPhone = (TextView)findViewById(R.id.txtViewPhone);
+        txtEmail = (TextView)findViewById(R.id.txtViewEmail);
+        txtDate = (TextView)findViewById(R.id.txtViewDate);
+        txtTime = (TextView)findViewById(R.id.txtViewTime);
+        txtLoc = (TextView)findViewById(R.id.txtViewLoc);
+        txtDep = (TextView)findViewById(R.id.txtViewDep);
+        txtFpay = (TextView)findViewById(R.id.txtViewFpay);
+        txtRemark = (TextView)findViewById(R.id.txtViewRemark);
+        txtPayment = (TextView)findViewById(R.id.txtViewPayment);
+        txtJob = (TextView)findViewById(R.id.txtViewJob);
         btnViewBack = (Button)findViewById(R.id.btnViewBack);
         btnViewDel = (Button)findViewById(R.id.btnViewDel);
 

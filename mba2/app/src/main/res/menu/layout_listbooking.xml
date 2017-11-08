@@ -3,8 +3,10 @@
         android:title="View" />
     <item android:id="@+id/edit"
         android:title="Edit" />
+    <item android:id="@+id/status"
+        android:title="Change Status" />
     <item android:id="@+id/delete"
-        android:title="DELETE" />
+        android:title="Delete" />
     <item android:id="@+id/photo"
         android:title="Photo" />
     <item android:id="@+id/sms"

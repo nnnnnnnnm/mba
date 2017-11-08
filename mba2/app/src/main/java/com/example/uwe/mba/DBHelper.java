@@ -119,7 +119,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(DbContact.DbEntry.finalpay, finalpay);
         contentValues.put(DbContact.DbEntry.remarks, remarks);
         long result = db.update(DbContact.DbEntry.orders, contentValues,
-                "id =?",
+                DbContact.DbEntry.oid + "=?",
                 new String[]{String.valueOf(orderId)});
         if (result == -1) {
             return false;
@@ -134,7 +134,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(DbContact.DbEntry.paymentstatus, paymentstatus);
         contentValues.put(DbContact.DbEntry.jobstatus, jobstatus);
         long result = db.update(DbContact.DbEntry.orders, contentValues,
-                "id =?",
+                DbContact.DbEntry.oid + "=?",
                 new String[]{String.valueOf(orderId)});
         if (result == -1) {
             return false;

@@ -29,7 +29,7 @@
         android:text="Last Name :"
         android:textSize="18sp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtLname"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtViewLname"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -70,7 +70,7 @@
         android:text="Date :"
         android:textSize="18sp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtDate"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtViewDate"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -86,7 +86,7 @@
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="@+id/textView9"
         android:layout_marginTop="9dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewEmail"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/textView9" />
 
@@ -97,7 +97,7 @@
         android:text="Location :"
         android:textSize="18sp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtLoc"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtViewLoc"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -113,7 +113,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="@+id/textView2"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtDep"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtViewDep"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -129,9 +129,9 @@
         android:textSize="18sp"
         tools:layout_constraintTop_creator="1"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtLoc"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewLoc"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toRightOf="@+id/txtDep"
+        app:layout_constraintLeft_toRightOf="@+id/txtViewDep"
         android:layout_marginLeft="6dp" />
 
     <TextView
@@ -141,7 +141,7 @@
         android:text="Remark :"
         android:textSize="18sp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtRemark"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtViewRemark"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -161,21 +161,21 @@
         android:layout_marginRight="70dp" />
 
     <TextView
-        android:id="@+id/txtFname"
+        android:id="@+id/txtViewFname"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="18sp"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/txtLname"
+        app:layout_constraintRight_toRightOf="@+id/txtViewLname"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtLname" />
+        app:layout_constraintLeft_toLeftOf="@+id/txtViewLname" />
 
     <TextView
-        android:id="@+id/txtLname"
+        android:id="@+id/txtViewLname"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:ems="10"
@@ -183,14 +183,14 @@
         android:textSize="18sp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/txtPhone"
+        app:layout_constraintRight_toRightOf="@+id/txtViewPhone"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtFname"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewFname"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtPhone" />
+        app:layout_constraintLeft_toLeftOf="@+id/txtViewPhone" />
 
     <TextView
-        android:id="@+id/txtEmail"
+        android:id="@+id/txtViewEmail"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:ems="10"
@@ -198,14 +198,14 @@
         android:textSize="18sp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/txtPhone"
+        app:layout_constraintRight_toRightOf="@+id/txtViewPhone"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtPhone"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewPhone"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtPhone" />
+        app:layout_constraintLeft_toLeftOf="@+id/txtViewPhone" />
 
     <TextView
-        android:id="@+id/txtDate"
+        android:id="@+id/txtViewDate"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="58dp"
@@ -222,10 +222,10 @@
         android:layout_marginRight="48dp" />
 
     <TextView
-        android:id="@+id/txtTime"
+        android:id="@+id/txtViewTime"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="3dp"
         android:layout_marginStart="7dp"
         android:ems="10"
         android:textSize="18sp"
@@ -236,30 +236,30 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toRightOf="@+id/textView6"
         android:layout_marginLeft="7dp"
-        android:layout_marginRight="4dp" />
+        android:layout_marginRight="3dp" />
 
     <TextView
-        android:id="@+id/txtLoc"
+        android:id="@+id/txtViewLoc"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="18sp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="13dp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/txtTime"
+        app:layout_constraintRight_toRightOf="@+id/txtViewTime"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/textView7"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="12dp" />
+        android:layout_marginRight="13dp" />
 
     <TextView
-        android:id="@+id/txtDep"
+        android:id="@+id/txtViewDep"
         android:layout_width="96dp"
         android:layout_height="0dp"
         android:layout_marginStart="2dp"
@@ -269,14 +269,14 @@
         android:textSize="18sp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/txtFpay"
+        app:layout_constraintBottom_toBottomOf="@+id/txtViewFpay"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintTop_toTopOf="@+id/textView9"
         app:layout_constraintLeft_toRightOf="@+id/textView8"
         android:layout_marginLeft="2dp" />
 
     <TextView
-        android:id="@+id/txtFpay"
+        android:id="@+id/txtViewFpay"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:ems="10"
@@ -284,14 +284,14 @@
         android:maxLength="8"
         android:textSize="18sp"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/txtRemark"
+        app:layout_constraintRight_toRightOf="@+id/txtViewRemark"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toRightOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/txtRemark"
+        android:id="@+id/txtViewRemark"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ems="10"
@@ -303,9 +303,9 @@
         app:layout_constraintBottom_toTopOf="@+id/textView24"
         android:layout_marginStart="7dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="@+id/txtTime"
+        app:layout_constraintRight_toRightOf="@+id/txtViewTime"
         android:layout_marginTop="7dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtFpay"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewFpay"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="2dp"
         app:layout_constraintLeft_toRightOf="@+id/textView10"
@@ -313,7 +313,7 @@
         android:layout_marginRight="8dp" />
 
     <TextView
-        android:id="@+id/txtPhone"
+        android:id="@+id/txtViewPhone"
         android:layout_width="0dp"
         android:layout_height="37dp"
         android:ems="10"
@@ -324,9 +324,9 @@
         tools:layout_constraintRight_creator="1"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="11dp"
-        app:layout_constraintRight_toRightOf="@+id/txtTime"
+        app:layout_constraintRight_toRightOf="@+id/txtViewTime"
         android:layout_marginTop="7dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtLname"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewLname"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toRightOf="@+id/textView2"
         android:layout_marginLeft="6dp"
@@ -360,7 +360,7 @@
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="134dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtDate"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewDate"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="132dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -372,15 +372,15 @@
         android:layout_height="wrap_content"
         android:text="Job Status :"
         android:textSize="18sp"
-        app:layout_constraintRight_toLeftOf="@+id/txtJob"
+        app:layout_constraintRight_toLeftOf="@+id/txtViewJob"
         tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="2dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtJob"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtViewJob"
         tools:layout_constraintBaseline_creator="1"
         android:layout_marginRight="2dp" />
 
     <TextView
-        android:id="@+id/txtPayment"
+        android:id="@+id/txtViewPayment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="18sp"
@@ -389,18 +389,18 @@
         tools:layout_constraintBottom_creator="1"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintRight_toRightOf="@+id/txtTime"
+        app:layout_constraintRight_toRightOf="@+id/txtViewTime"
         android:layout_marginTop="34dp"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="35dp"
         app:layout_constraintLeft_toRightOf="@+id/textView24"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtJob"
-        app:layout_constraintTop_toTopOf="@+id/txtRemark" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtViewJob"
+        app:layout_constraintTop_toTopOf="@+id/txtViewRemark" />
 
     <TextView
-        android:id="@+id/txtJob"
+        android:id="@+id/txtViewJob"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:textSize="18sp"
@@ -408,11 +408,11 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="@+id/btnViewDel"
-        app:layout_constraintRight_toRightOf="@+id/txtPayment"
+        app:layout_constraintRight_toRightOf="@+id/txtViewPayment"
         android:layout_marginTop="70dp"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="65dp"
-        app:layout_constraintTop_toTopOf="@+id/txtRemark"
+        app:layout_constraintTop_toTopOf="@+id/txtViewRemark"
         app:layout_constraintLeft_toRightOf="@+id/textView" />
 
 </android.support.constraint.ConstraintLayout>

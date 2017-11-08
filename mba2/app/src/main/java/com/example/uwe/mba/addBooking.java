@@ -16,7 +16,7 @@ public class addBooking extends AppCompatActivity {
 
     DBHelper DH = null;
     Button btnAdd, btnBack, btnReset;
-    EditText etFname, etLname, etPhone, etEmail, etDate, etTime, etLoc, etDep, etFPay, etRemark;
+    EditText txtAddFname, txtAddLname, txtAddPhone, txtAddEmail, txtAddDate, txtAddTime, txtAddLoc, txtAddDep, txtAddFpay, txtAddRemark;
     public boolean isInserted;
 
     @Override
@@ -27,16 +27,16 @@ public class addBooking extends AppCompatActivity {
         btnAdd = (Button)findViewById(R.id.btnAdd);
         btnBack = (Button)findViewById(R.id.btnViewBack);
         btnReset = (Button)findViewById(R.id.btnViewDel);
-        etFname = (EditText)findViewById(R.id.txtFname);
-        etLname = (EditText)findViewById(R.id.txtLname);
-        etPhone = (EditText)findViewById(R.id.txtPhone);
-        etEmail = (EditText)findViewById(R.id.txtEmail);
-        etDate = (EditText)findViewById(R.id.txtDate);
-        etTime = (EditText)findViewById(R.id.etTime);
-        etLoc = (EditText)findViewById(R.id.txtLoc);
-        etDep = (EditText)findViewById(R.id.txtDep);
-        etFPay = (EditText)findViewById(R.id.txtFpay);
-        etRemark = (EditText)findViewById(R.id.txtRemark);
+        txtAddFname = (EditText)findViewById(R.id.txtAddFname);
+        txtAddLname = (EditText)findViewById(R.id.txtAddLname);
+        txtAddPhone = (EditText)findViewById(R.id.txtAddPhone);
+        txtAddEmail = (EditText)findViewById(R.id.txtAddEmail);
+        txtAddDate = (EditText)findViewById(R.id.txtAddDate);
+        txtAddTime = (EditText)findViewById(R.id.txtAddTime);
+        txtAddLoc = (EditText)findViewById(R.id.txtAddLoc);
+        txtAddDep = (EditText)findViewById(R.id.txtAddDep);
+        txtAddFpay = (EditText)findViewById(R.id.txtAddFpay);
+        txtAddRemark = (EditText)findViewById(R.id.txtAddRemark);
 
         openDB();
 
@@ -46,46 +46,44 @@ public class addBooking extends AppCompatActivity {
                 createBackDialogBox();
             }
         });
-
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createResetDialogBox();
             }
         });
-
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(etFname.getText().toString())) {
-                    etFname.setError("Client's first name is essential");
+                if (TextUtils.isEmpty(txtAddFname.getText().toString())) {
+                    txtAddFname.setError("Client's first name is essential");
                     return;
-                } else if (TextUtils.isEmpty(etLname.getText().toString())) {
-                    etLname.setError("Client's last name is essential");
+                } else if (TextUtils.isEmpty(txtAddLname.getText().toString())) {
+                    txtAddLname.setError("Client's last name is essential");
                     return;
-                } else if (TextUtils.isEmpty(etPhone.getText().toString())) {
-                    etPhone.setError("Client's phone is essential");
+                } else if (TextUtils.isEmpty(txtAddPhone.getText().toString())) {
+                    txtAddPhone.setError("Client's phone is essential");
                     return;
-                } else if (TextUtils.isEmpty(etEmail.getText().toString())) {
-                    etEmail.setError("Client's email is essential");
+                } else if (TextUtils.isEmpty(txtAddEmail.getText().toString())) {
+                    txtAddEmail.setError("Client's email is essential");
                     return;
-                } else if (TextUtils.isEmpty(etDate.getText().toString())) {
-                    etDate.setError("Date is essential");
+                } else if (TextUtils.isEmpty(txtAddDate.getText().toString())) {
+                    txtAddDate.setError("Date is essential");
                     return;
-                } else if (TextUtils.isEmpty(etTime.getText().toString())) {
-                    etTime.setError("Time is essential");
+                } else if (TextUtils.isEmpty(txtAddTime.getText().toString())) {
+                    txtAddTime.setError("Time is essential");
                     return;
-                } else if (TextUtils.isEmpty(etLoc.getText().toString())) {
-                    etLoc.setError("Location is essential");
+                } else if (TextUtils.isEmpty(txtAddLoc.getText().toString())) {
+                    txtAddLoc.setError("Location is essential");
                     return;
-                } else if (TextUtils.isEmpty(etDep.getText().toString())) {
-                    etDep.setError("Deposit is essential");
+                } else if (TextUtils.isEmpty(txtAddDep.getText().toString())) {
+                    txtAddDep.setError("Deposit is essential");
                     return;
-                } else if (TextUtils.isEmpty(etFPay.getText().toString())) {
-                    etFPay.setError("Final pay is essential");
+                } else if (TextUtils.isEmpty(txtAddFpay.getText().toString())) {
+                    txtAddFpay.setError("Final pay is essential");
                     return;
-                } else if (TextUtils.isEmpty(etRemark.getText().toString())) {
-                    etRemark.setError("Remark is essential");
+                } else if (TextUtils.isEmpty(txtAddRemark.getText().toString())) {
+                    txtAddRemark.setError("Remark is essential");
                     return;
                 } else {
                     createAddDialogBox();
@@ -97,9 +95,11 @@ public class addBooking extends AppCompatActivity {
     private void openDB() {
         DH = new DBHelper(this);
     }
+
     private void closeDB() {
         DH.close();
     }
+
     protected void onDestroy() {
         super.onDestroy();
         closeDB();
@@ -107,32 +107,32 @@ public class addBooking extends AppCompatActivity {
 
     private void add(){
         try {
-            isInserted = DH.insertOrder(etFname.getText().toString(),
-                    etLname.getText().toString(),
-                    etPhone.getText().toString(),
-                    etEmail.getText().toString(),
-                    etDate.getText().toString(),
-                    etTime.getText().toString(),
-                    etLoc.getText().toString(),
+            isInserted = DH.insertOrder(txtAddFname.getText().toString(),
+                    txtAddLname.getText().toString(),
+                    txtAddPhone.getText().toString(),
+                    txtAddEmail.getText().toString(),
+                    txtAddDate.getText().toString(),
+                    txtAddTime.getText().toString(),
+                    txtAddLoc.getText().toString(),
                     " deposit received ",
                     " confirm ",
-                    etDep.getText().toString(),
-                    etFPay.getText().toString(),
-                    etRemark.getText().toString());
+                    txtAddDep.getText().toString(),
+                    txtAddFpay.getText().toString(),
+                    txtAddRemark.getText().toString());
         } catch (SQLiteException e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
         if (isInserted == true) {
-            etFname.setText("");
-            etLname.setText("");
-            etPhone.setText("");
-            etEmail.setText("");
-            etDate.setText("");
-            etTime.setText("");
-            etLoc.setText("");
-            etDep.setText("");
-            etFPay.setText("");
-            etRemark.setText("");
+            txtAddFname.setText("");
+            txtAddLname.setText("");
+            txtAddPhone.setText("");
+            txtAddEmail.setText("");
+            txtAddDate.setText("");
+            txtAddTime.setText("");
+            txtAddLoc.setText("");
+            txtAddDep.setText("");
+            txtAddFpay.setText("");
+            txtAddRemark.setText("");
             Toast.makeText(this, "This Orders has added!!!!", Toast.LENGTH_LONG).show();
             Log.d("db", "Added!!!!!!!!!!!!!!!!!:");
         } else {
@@ -198,16 +198,16 @@ public class addBooking extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODOAuto‐generated method stub
-                etFname.setText("");
-                etLname.setText("");
-                etPhone.setText("");
-                etEmail.setText("");
-                etDate.setText("");
-                etTime.setText("");
-                etLoc.setText("");
-                etDep.setText("");
-                etFPay.setText("");
-                etRemark.setText("");
+                txtAddFname.setText("");
+                txtAddLname.setText("");
+                txtAddPhone.setText("");
+                txtAddEmail.setText("");
+                txtAddDate.setText("");
+                txtAddTime.setText("");
+                txtAddLoc.setText("");
+                txtAddDep.setText("");
+                txtAddFpay.setText("");
+                txtAddRemark.setText("");
             }
         });
         adExit.setNegativeButton("Cancel",
