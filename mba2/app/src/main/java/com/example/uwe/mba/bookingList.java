@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -47,7 +48,10 @@ public class bookingList extends AppCompatActivity {
     int post;
     String list, mCurrentPhotoPath;
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_TAKE_PHOTO = 1;
     public File file;
+    protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 0;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,34 +168,43 @@ public class bookingList extends AppCompatActivity {
                 adExit.show();
                 break;
             case R.id.photo:
-                /*Intent photoit = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                /*
+                Intent photoit = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 try {
                     file = getFile();
                 }catch  (IOException e) {
                     e.printStackTrace();
                 }
                 photoit.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-                startActivityForResult(photoit, 1);
-*/
+                startActivityForResult(photoit, REQUEST_IMAGE_CAPTURE);
+                */
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 // Ensure that there's a camera activity to handle the intent
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                     // Create the File where the photo should go
                     File photoFile = null;
                     try {
-                        photoFile = getFile();
+                        photoFile = createImageFile();
                     } catch (IOException ex) {
-
+                        // Error occurred while creating the File
+                        ex.printStackTrace();
                     }
                     // Continue only if the File was successfully created
                     if (photoFile != null) {
                         Uri photoURI = FileProvider.getUriForFile(this,
-                                "com.example.android.uwe",
+                                "com.example.android.uwe.mba",
                                 photoFile);
                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                        startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
                     }
                 }
+                /*
+                intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),"fname_" +
+                        String.valueOf(System.currentTimeMillis()) + ".jpg"));
+                intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, imageUri);
+                startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+                */
                 break;
             case R.id.sms:
                 String SMSUri = "sms:" + oneData.getPhone().toString() +
@@ -220,6 +233,20 @@ public class bookingList extends AppCompatActivity {
         }
         return true;
     }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+                //use imageUri here to access the image
+                Bundle extras = data.getExtras();
+                Log.e("URI",imageUri.toString());
+                Bitmap bmp = (Bitmap) extras.get("data");
+                // here you will get the image as bitmap
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Picture was not taken", Toast.LENGTH_SHORT);
+            }
+        }
+    }
 
     private void openDB() {
         DH = new DBHelper(this);
@@ -232,7 +259,7 @@ public class bookingList extends AppCompatActivity {
         closeDB();
     }
 
-    private File getFile() throws IOException {
+    private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
