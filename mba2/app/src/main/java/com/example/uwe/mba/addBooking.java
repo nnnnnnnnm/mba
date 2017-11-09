@@ -114,8 +114,8 @@ public class addBooking extends AppCompatActivity {
                     txtAddDate.getText().toString(),
                     txtAddTime.getText().toString(),
                     txtAddLoc.getText().toString(),
-                    " deposit received ",
-                    " confirm ",
+                    " deposit received",
+                    " confirmed",
                     txtAddDep.getText().toString(),
                     txtAddFpay.getText().toString(),
                     txtAddRemark.getText().toString());

@@ -191,4 +191,52 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("SSSSSSSSreached", data.toString());
         return data;
     }
+
+    public ArrayList<Booking> getComfirmData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<Booking> booking = new ArrayList<Booking>();
+        Cursor result = db.rawQuery("SELECT * FROM orders WHERE jobstatus = 'confirmed'", null);
+        Log.d("RRRRRRRResult", result.toString());
+
+        while(result.moveToNext()){
+            booking.add( new Booking(result.getInt(0),
+                    result.getString(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getString(4),
+                    result.getString(5),
+                    result.getString(6),
+                    result.getString(7),
+                    result.getString(8),
+                    result.getString(9),
+                    result.getString(10),
+                    result.getString(11),
+                    result.getString(12)));
+        }
+        return booking;
+    }
+
+    public ArrayList<Booking> getCompleteData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<Booking> booking = new ArrayList<Booking>();
+        Cursor result = db.rawQuery("SELECT * FROM orders WHERE jobstatus = 'completed'", null);
+        Log.d("RRRRRRRResult", result.toString());
+
+        while(result.moveToNext()){
+            booking.add( new Booking(result.getInt(0),
+                    result.getString(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getString(4),
+                    result.getString(5),
+                    result.getString(6),
+                    result.getString(7),
+                    result.getString(8),
+                    result.getString(9),
+                    result.getString(10),
+                    result.getString(11),
+                    result.getString(12)));
+        }
+        return booking;
+    }
 }

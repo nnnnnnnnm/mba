@@ -44,7 +44,7 @@ public class ChangeStatusActivity extends AppCompatActivity {
         ArrayAdapter<String> lunchList = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pay);
         spinPay.setAdapter(lunchList);
 
-        final String[] job = {"not confirm", "confirm", "completed", "final invoice sent"};
+        final String[] job = {"not confirm", "confirmed", "completed", "final invoice sent"};
         ArrayAdapter<String> jobStat = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, job);
         spinJob.setAdapter(jobStat);
 

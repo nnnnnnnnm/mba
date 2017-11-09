@@ -40,10 +40,10 @@ public class bookingList extends AppCompatActivity {
     ListView listBooking;
     DBHelper DH = new DBHelper(this);
     MyBookingAdapter myCustomAdapter = null;
+    MyBookingAdapter myAllCustomAdapter = null;
     ArrayList<Booking> cars = null;
-    Booking cars2 = null;
+    ArrayList<Booking> comfirm = null;
     Spinner spinList;
-    Cursor data;
     Booking oneData;
     int post;
     String list, mCurrentPhotoPath;
@@ -62,23 +62,7 @@ public class bookingList extends AppCompatActivity {
         final String[] lunch = {"All", "Confirmed", "Completed", "Waiting"};
         ArrayAdapter<String> lunchList = new ArrayAdapter<>(bookingList.this, android.R.layout.simple_spinner_dropdown_item, lunch);
         spinList.setAdapter(lunchList);
-/*
-        spinList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                list = spinList.getSelectedItem().toString();
-                if(list=="All"){
 
-                } else if(list=="Confirmed"){
-
-                } else if(list=="Completed"){
-
-                } else if(list=="Waiting"){
-
-                }
-            }
-        });
-*/
         openDB();
 
         btnListBack = (Button)findViewById(R.id.btnListBack);
@@ -101,7 +85,6 @@ public class bookingList extends AppCompatActivity {
 
         listBooking = (ListView)findViewById(R.id.listBooking);
         cars = DH.getData();
-        data = DH.getListContents();
 
         myCustomAdapter= new MyBookingAdapter(this,R.layout.list_item,cars);
 
@@ -114,6 +97,35 @@ public class bookingList extends AppCompatActivity {
             }
         });
         registerForContextMenu(listBooking);
+
+        spinList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                list = spinList.getSelectedItem().toString();
+                if(list=="All"){
+                    Log.d("SSSSSSPINNER     ", list);
+                    cars = DH.getData();
+                    myCustomAdapter= new MyBookingAdapter(bookingList.this,R.layout.list_item,cars);
+                    listBooking.setAdapter(myCustomAdapter);
+                } else if(list=="Confirmed"){
+                    Log.d("SSSSSSPINNER     ", list);
+                    cars = DH.getComfirmData();
+                    myCustomAdapter= new MyBookingAdapter(bookingList.this,R.layout.list_item,cars);
+                    listBooking.setAdapter(myCustomAdapter);
+                } else if(list=="Completed"){
+                    Log.d("SSSSSSPINNER     ", list);
+                    cars = DH.getCompleteData();
+                    myCustomAdapter= new MyBookingAdapter(bookingList.this,R.layout.list_item,cars);
+                    listBooking.setAdapter(myCustomAdapter);
+                } else if(list=="Waiting"){
+                    Log.d("SSSSSSPINNER     ", list);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -210,7 +222,7 @@ public class bookingList extends AppCompatActivity {
                 String SMSUri = "sms:" + oneData.getPhone().toString() +
                         "?subject=MakeUp Service Reminder&body=Dear " +
                         oneData.getLname().toString() + " " + oneData.getFname().toString() +
-                        ",\nI am your Wrdding MakeUp Friend. Please Check for your Deposit " +
+                        ",\nI am your Wedding MakeUp Friend. Please Check for your Deposit " +
                         "($" + oneData.getDeposit().toString() + ")or " +
                         "Final Payment ($" + oneData.getFinalpay().toString() + ").";
                 Intent smsit = new Intent(Intent.ACTION_VIEW, Uri.parse(SMSUri));
@@ -225,7 +237,7 @@ public class bookingList extends AppCompatActivity {
                 String MialUri = "mailto:" + oneData.getEmail().toString() +
                         "?subject=MakeUp Service Reminder&body=Dear " +
                         oneData.getLname().toString() + " " + oneData.getFname().toString() +
-                        ",\nI am your Wrdding MakeUp Friend. Please Check for your Deposit or " +
+                        ",\nI am your Wedding MakeUp Friend. Please Check for your Deposit or " +
                         "Final Payment Invoice.";
                 Intent emailit = new Intent(Intent.ACTION_VIEW, Uri.parse(MialUri));
                 startActivity(emailit);
