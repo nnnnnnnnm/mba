@@ -7,8 +7,6 @@
         android:title="Change Status" />
     <item android:id="@+id/delete"
         android:title="Delete" />
-    <item android:id="@+id/photo"
-        android:title="Photo" />
     <item android:id="@+id/sms"
         android:title="SMS" />
     <item android:id="@+id/phone"

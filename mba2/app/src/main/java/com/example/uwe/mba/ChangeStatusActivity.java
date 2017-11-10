@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ public class ChangeStatusActivity extends AppCompatActivity {
 
     Spinner spinPay, spinJob;
     TextView txtChangeFname, txtChangeLname, txtChangePhone, txtChangeEmail, txtChangeDate, txtChangeTime, txtChangeLoc, txtChangeDep, txtChangeFpay, txtChangeRemark;
-    Button btnStatus, btnChangeBack;
+    ImageButton btnStatus, btnChangeBack;
     Booking booking;
     public Date newDate, newTime;
     boolean isInserted;
@@ -58,8 +59,8 @@ public class ChangeStatusActivity extends AppCompatActivity {
         txtChangeDep = (TextView)findViewById(R.id.txtChangeDep);
         txtChangeFpay = (TextView)findViewById(R.id.txtChangeFpay);
         txtChangeRemark = (TextView)findViewById(R.id.txtChangeRemark);
-        btnStatus = (Button)findViewById(R.id.btnStatus);
-        btnChangeBack = (Button)findViewById(R.id.btnChangeBack);
+        btnStatus = (ImageButton)findViewById(R.id.btnStatus);
+        btnChangeBack = (ImageButton)findViewById(R.id.btnChangeBack);
 
         String strCurrentDate = booking.getOdate();
         String strCrrentTime = booking.getOtime();

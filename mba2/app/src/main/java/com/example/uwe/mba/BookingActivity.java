@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.ParseException;
@@ -16,7 +17,7 @@ import java.util.Date;
 public class BookingActivity extends AppCompatActivity {
 
     TextView txtFname, txtLname, txtPhone, txtEmail, txtDate, txtTime, txtLoc, txtDep, txtFpay, txtRemark, txtPayment, txtJob;
-    Button btnViewBack, btnViewDel;
+    ImageButton btnViewBack, btnViewDel;
     DBHelper DH = new DBHelper(this);
     Booking booking;
     public Date newDate, newTime;
@@ -37,8 +38,8 @@ public class BookingActivity extends AppCompatActivity {
         txtRemark = (TextView)findViewById(R.id.txtViewRemark);
         txtPayment = (TextView)findViewById(R.id.txtViewPayment);
         txtJob = (TextView)findViewById(R.id.txtViewJob);
-        btnViewBack = (Button)findViewById(R.id.btnViewBack);
-        btnViewDel = (Button)findViewById(R.id.btnViewDel);
+        btnViewBack = (ImageButton)findViewById(R.id.btnViewBack);
+        btnViewDel = (ImageButton)findViewById(R.id.btnViewDel);
 
         openDB();
 

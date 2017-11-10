@@ -4,53 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.uwe.mba.MainActivity">
+    android:background="@drawable/tool1"
+    tools:context="com.example.uwe.mba.MainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
-    <Button
-        android:id="@+id/btnExit"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:text="Exit"
-        tools:layout_constraintRight_creator="1"
+    <ImageButton
+        android:id="@+id/btnReply"
+        android:layout_width="99dp"
+        android:layout_height="95dp"
+        app:srcCompat="@drawable/reply"
+        android:background="@null"
+        android:layout_marginStart="64dp"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/btnBooking"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="162dp"
-        app:layout_constraintLeft_toLeftOf="@+id/btnBooking" />
+        android:layout_marginBottom="107dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="64dp" />
 
-    <Button
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="156dp"
+        android:layout_height="64dp"
+        app:srcCompat="@drawable/make_text"
+        android:layout_marginEnd="16dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="31dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="16dp" />
+
+    <ImageButton
         android:id="@+id/btnBooking"
-        android:layout_width="217dp"
-        android:layout_height="65dp"
-        android:text="Booking"
+        android:layout_width="95dp"
+        android:layout_height="107dp"
+        app:srcCompat="@drawable/book"
+        android:background="@null"
+        android:layout_marginEnd="56dp"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/btnExit"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="23dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="56dp" />
 
-    <Button
-        android:id="@+id/btnReply"
-        android:layout_width="217dp"
-        android:layout_height="65dp"
-        android:text="Reply"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/btnBooking"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="19dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/btnDel"
+    <ImageButton
+        android:id="@+id/btnExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="388dp" />
+        app:srcCompat="@drawable/exit2"
+        android:background="@null"
+        android:layout_marginEnd="1dp"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="1dp" />
 
 </android.support.constraint.ConstraintLayout>

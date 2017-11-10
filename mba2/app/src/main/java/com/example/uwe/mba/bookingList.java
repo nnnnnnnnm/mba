@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -36,7 +37,7 @@ import android.widget.Toast;
 
 public class bookingList extends AppCompatActivity {
 
-    Button btnListBack, btnAddBooking;
+    ImageButton btnListBack, btnAddBooking;
     ListView listBooking;
     DBHelper DH = new DBHelper(this);
     MyBookingAdapter myCustomAdapter = null;
@@ -65,7 +66,7 @@ public class bookingList extends AppCompatActivity {
 
         openDB();
 
-        btnListBack = (Button)findViewById(R.id.btnListBack);
+        btnListBack = (ImageButton)findViewById(R.id.btnListBack);
         btnListBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +74,7 @@ public class bookingList extends AppCompatActivity {
             }
         });
 
-        btnAddBooking = (Button)findViewById(R.id.btnAddBooking);
+        btnAddBooking = (ImageButton)findViewById(R.id.btnAddBooking);
         btnAddBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,45 +180,12 @@ public class bookingList extends AppCompatActivity {
                 adExit.create();
                 adExit.show();
                 break;
+            /*
             case R.id.photo:
-                /*
-                Intent photoit = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                try {
-                    file = getFile();
-                }catch  (IOException e) {
-                    e.printStackTrace();
-                }
-                photoit.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-                startActivityForResult(photoit, REQUEST_IMAGE_CAPTURE);
-                */
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                // Ensure that there's a camera activity to handle the intent
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    // Create the File where the photo should go
-                    File photoFile = null;
-                    try {
-                        photoFile = createImageFile();
-                    } catch (IOException ex) {
-                        // Error occurred while creating the File
-                        ex.printStackTrace();
-                    }
-                    // Continue only if the File was successfully created
-                    if (photoFile != null) {
-                        Uri photoURI = FileProvider.getUriForFile(this,
-                                "com.example.android.uwe.mba",
-                                photoFile);
-                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                        startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-                    }
-                }
-                /*
-                intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),"fname_" +
-                        String.valueOf(System.currentTimeMillis()) + ".jpg"));
-                intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, imageUri);
-                startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-                */
+                intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                startActivityForResult(intent, 0);
                 break;
+                */
             case R.id.sms:
                 String SMSUri = "sms:" + oneData.getPhone().toString() +
                         "?subject=MakeUp Service Reminder&body=Dear " +

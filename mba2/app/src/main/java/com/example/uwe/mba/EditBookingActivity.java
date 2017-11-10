@@ -10,14 +10,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class EditBookingActivity extends AppCompatActivity {
 
+    ImageButton btnEdit, btnEditBack;
     EditText txtEditFname, txtEditLname, txtEditPhone, txtEditEmail, txtEditDate, txtEditTime,txtEditLoc, txtEditDep, txtEditFpay, txtEditRemark;
     DBHelper DH = new DBHelper(this);
     public Booking booking;
-    Button btnEditBack, btnEdit;
     public boolean isInserted;
 
     @Override
@@ -35,8 +36,8 @@ public class EditBookingActivity extends AppCompatActivity {
         txtEditDep = (EditText)findViewById(R.id.txtEditDep);
         txtEditFpay = (EditText)findViewById(R.id.txtEditFpay);
         txtEditRemark = (EditText)findViewById(R.id.txtEditRemark);
-        btnEditBack = (Button)findViewById(R.id.btnEditBack);
-        btnEdit = (Button)findViewById(R.id.btnEdit);
+        btnEditBack = (ImageButton)findViewById(R.id.btnEditBack);
+        btnEdit = (ImageButton)findViewById(R.id.btnEdit);
 
         openDB();
 

@@ -6,26 +6,29 @@
     android:layout_height="match_parent"
     tools:context="com.example.uwe.mba.replyForm"
     tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    android:background="@drawable/back2">
 
     <TextView
         android:id="@+id/labLName"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_width="126dp"
+        android:layout_height="31dp"
         android:text="Last Name :"
         android:textSize="18sp"
         android:layout_marginEnd="1dp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/labPack"
         app:layout_constraintRight_toRightOf="@+id/labFName"
         android:layout_marginTop="58dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="59dp"
+        android:layout_marginBottom="65dp"
         app:layout_constraintLeft_toLeftOf="@+id/labPNum"
         app:layout_constraintTop_toTopOf="@+id/etFName"
-        android:layout_marginRight="1dp" />
+        android:layout_marginRight="1dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@+id/labPack" />
 
     <TextView
         android:id="@+id/labFName"
@@ -42,7 +45,8 @@
         android:layout_marginBottom="22dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/etFName"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/labPNum"
@@ -54,7 +58,7 @@
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="@+id/etPNum"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="9dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp" />
 
@@ -67,10 +71,11 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="@+id/etLName"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/etLName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
         android:id="@+id/etLName"
@@ -83,7 +88,9 @@
         app:layout_constraintRight_toRightOf="@+id/etPNum"
         app:layout_constraintTop_toBottomOf="@+id/etFName"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/etPNum" />
+        app:layout_constraintLeft_toLeftOf="@+id/etPNum"
+        android:layout_marginTop="2dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
         android:id="@+id/etPNum"
@@ -97,7 +104,8 @@
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLName"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="2dp" />
 
     <Spinner
         android:id="@+id/spinPack"
@@ -108,7 +116,8 @@
         app:layout_constraintRight_toRightOf="@+id/etPNum"
         app:layout_constraintTop_toBottomOf="@+id/etPNum"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/etPNum" />
+        app:layout_constraintLeft_toLeftOf="@+id/etPNum"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <TextView
         android:id="@+id/labPack"
@@ -118,38 +127,11 @@
         android:textSize="18sp"
         android:layout_marginStart="16dp"
         tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="9dp"
         app:layout_constraintTop_toBottomOf="@+id/labPNum"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp" />
-
-    <Button
-        android:id="@+id/btnSmsBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:layout_marginEnd="63dp"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSms"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnSms"
-        android:layout_marginRight="63dp" />
-
-    <Button
-        android:id="@+id/btnSms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SMS"
-        android:layout_marginStart="65dp"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="97dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="65dp" />
 
     <TextView
         android:id="@+id/textView11"
@@ -178,6 +160,42 @@
         app:layout_constraintRight_toRightOf="@+id/spinPack"
         app:layout_constraintTop_toBottomOf="@+id/spinPack"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/spinPack" />
+        app:layout_constraintLeft_toLeftOf="@+id/spinPack"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="1dp" />
+
+    <ImageButton
+        android:id="@+id/btnSmsBack"
+        android:layout_width="64dp"
+        android:layout_height="68dp"
+        android:background="@null"
+        app:srcCompat="@drawable/back"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/etDate"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/etDate"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnSms"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@null"
+        app:srcCompat="@drawable/sms"
+        app:layout_constraintRight_toLeftOf="@+id/btnSmsBack"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="72dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="72dp"
+        android:layout_marginRight="72dp" />
 
 </android.support.constraint.ConstraintLayout>

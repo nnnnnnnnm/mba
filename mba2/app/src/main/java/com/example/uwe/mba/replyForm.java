@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView;
@@ -21,7 +22,7 @@ import java.util.Date;
 public class replyForm extends AppCompatActivity {
 
     Spinner spinPack;
-    Button btnSmsBack, btnSms;
+    ImageButton btnSmsBack, btnSms;
     EditText etPNum, etFName, etLName, etDate;
     String list, dep, fpay;
     public Date newDate;
@@ -37,7 +38,7 @@ public class replyForm extends AppCompatActivity {
         ArrayAdapter<String> lunchList = new ArrayAdapter<>(replyForm.this, android.R.layout.simple_spinner_dropdown_item, lunch);
         spinPack.setAdapter(lunchList);
 
-        btnSmsBack = (Button) findViewById(R.id.btnSmsBack);
+        btnSmsBack = (ImageButton) findViewById(R.id.btnSmsBack);
         btnSmsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +51,7 @@ public class replyForm extends AppCompatActivity {
         etLName = (EditText)findViewById(R.id.etLName);
         etPNum = (EditText)findViewById(R.id.etPNum);
 
-        btnSms = (Button) findViewById(R.id.btnSms);
+        btnSms = (ImageButton) findViewById(R.id.btnSms);
         btnSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

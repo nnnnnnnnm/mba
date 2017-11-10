@@ -8,15 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnReply, btnBooking, btnExit, btnDel;
+    ImageButton btnReply, btnExit, btnBooking;
+    Button btnDel;
     DBHelper DH = new DBHelper(this);
     String type = "image/*";
-    String filename = "/drawable/myPhoto.jpg";
+    String filename = "@drawable/myPhoto.jpg";
     String mediaPath = Environment.getExternalStorageDirectory() + filename;
 
     @Override
@@ -24,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnReply = (Button)findViewById(R.id.btnReply);
-        btnBooking = (Button)findViewById(R.id.btnBooking);
-        btnExit = (Button)findViewById(R.id.btnExit);
+        btnReply = (ImageButton)findViewById(R.id.btnReply);
+        btnBooking = (ImageButton)findViewById(R.id.btnBooking);
+        btnExit = (ImageButton)findViewById(R.id.btnExit);
 
         btnReply.setOnClickListener(new View.OnClickListener() {
             @Override
