@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+/*
         btnDel = (Button)findViewById(R.id.btnDel);
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(i);
             }
         });
+        */
     }
     private void createInstagramIntent(String type, String mediaPath){
 

@@ -10,12 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.DialogInterface;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class addBooking extends AppCompatActivity {
 
     DBHelper DH = null;
-    Button btnAdd, btnBack, btnReset;
+    ImageButton btnAdd, btnBack, btnReset;
     EditText txtAddFname, txtAddLname, txtAddPhone, txtAddEmail, txtAddDate, txtAddTime, txtAddLoc, txtAddDep, txtAddFpay, txtAddRemark;
     public boolean isInserted;
 
@@ -24,9 +25,9 @@ public class addBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_booking);
 
-        btnAdd = (Button)findViewById(R.id.btnAdd);
-        btnBack = (Button)findViewById(R.id.btnViewBack);
-        btnReset = (Button)findViewById(R.id.btnViewDel);
+        btnAdd = (ImageButton)findViewById(R.id.btnAdd);
+        btnBack = (ImageButton)findViewById(R.id.btnViewBack);
+        btnReset = (ImageButton)findViewById(R.id.btnViewDel);
         txtAddFname = (EditText)findViewById(R.id.txtAddFname);
         txtAddLname = (EditText)findViewById(R.id.txtAddLname);
         txtAddPhone = (EditText)findViewById(R.id.txtAddPhone);
