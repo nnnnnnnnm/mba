@@ -25,6 +25,7 @@ import android.widget.SimpleAdapter;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,6 +54,7 @@ public class bookingList extends AppCompatActivity {
     public File file;
     protected static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 0;
     Uri imageUri;
+    public Date newDate, newTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,13 +204,57 @@ public class bookingList extends AppCompatActivity {
                 startActivity(phoneit);
                 break;
             case R.id.email:
-                String MialUri = "mailto:" + oneData.getEmail().toString() +
+                String MailUri = "mailto:" + oneData.getEmail().toString() +
                         "?subject=MakeUp Service Reminder&body=Dear " +
                         oneData.getLname().toString() + " " + oneData.getFname().toString() +
                         ",\nI am your Wedding MakeUp Friend. Please Check for your Deposit or " +
                         "Final Payment Invoice.";
-                Intent emailit = new Intent(Intent.ACTION_VIEW, Uri.parse(MialUri));
+                Intent emailit = new Intent(Intent.ACTION_VIEW, Uri.parse(MailUri));
                 startActivity(emailit);
+                break;
+            case R.id.receipt:
+                String strCurrentDate = oneData.getOdate().toString();
+                String strCrrentTime = oneData.getOtime().toString();
+                SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+                SimpleDateFormat timefro = new SimpleDateFormat("hhmm");
+                try{
+                    newDate = format.parse(strCurrentDate);
+                    newTime = timefro.parse(strCrrentTime);
+                } catch (ParseException e){
+                    e.printStackTrace();
+                }
+                format = new SimpleDateFormat("yyyy-MM-dd");
+                String date = format.format(newDate);
+                timefro = new SimpleDateFormat("hh:mm aa");
+                String time = timefro.format(newTime);
+
+                String ReceiptUri = "mailto:" + oneData.getEmail().toString() +
+                        "?subject=MakeUp Service Reminder&body=Dear " +
+                        oneData.getLname().toString() + " " + oneData.getFname().toString() +
+                        ",\nI am your Wedding MakeUp Friend." +
+                        "\nWe have received your deposit." +
+                        "\nThis is the receipt email of our company." +
+                        "\nDeposit: " + oneData.getDeposit().toString() +
+                        "\nDate: " + date +
+                        "\nime: " + time +
+                        "\nLocation: " + oneData.getLocation().toString() +
+                        "\nIf you have any question about this receipt, simple reply to this email or contact our company." + "" +
+                        "\nHotline: xxxx-xxxx";
+                Intent receiptit = new Intent(Intent.ACTION_VIEW, Uri.parse(ReceiptUri));
+                startActivity(receiptit);
+                break;
+            case R.id.invoice:
+                String InvoiceUri = "mailto:" + oneData.getEmail().toString() +
+                        "?subject=MakeUp Service Reminder&body=Dear " +
+                        oneData.getLname().toString() + " " + oneData.getFname().toString() +
+                        ",\nI am your Wedding MakeUp Friend." +
+                        "\nWe have received your final pay." +
+                        "\nThis is the final invoice email of our company." +
+                        "\nFinal pay: " + oneData.getFinalpay().toString() +
+                        "\nIf you have any question about this receipt, simple reply to this email or contact our company." + "" +
+                        "\nHotline: xxxx-xxxx";
+                Intent invoiceit = new Intent(Intent.ACTION_VIEW, Uri.parse(InvoiceUri));
+                startActivity(invoiceit);
                 break;
         }
         return true;

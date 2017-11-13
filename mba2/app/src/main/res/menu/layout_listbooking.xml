@@ -13,4 +13,8 @@
         android:title="Phone" />
     <item android:id="@+id/email"
         android:title="Email" />
+    <item android:id="@+id/receipt"
+        android:title="Send Receipt" />
+    <item android:id="@+id/invoice"
+        android:title="Send Invoice" />
 </menu>
